@@ -26,3 +26,4 @@ end
 gem 'faker'
 gem 'devise'
 gem 'figaro', '~> 0.7.0'
+gem 'pundit'
