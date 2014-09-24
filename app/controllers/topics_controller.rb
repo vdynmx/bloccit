@@ -43,8 +43,11 @@ class TopicsController < ApplicationController
      end
    end
 
+<<<<<<< HEAD
   private 
 
+=======
+>>>>>>> validating-posts
   def topic_params
   params.require(:topic).permit(:title, :body)
   end
