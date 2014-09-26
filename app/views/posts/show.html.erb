@@ -11,6 +11,13 @@
     <small>
        <%= image_tag(@post.image.url) if @post.image? %>
      </small>
+     <%= @comments.count %> Comments
+     <%= render @comments %>
+
+    <% if policy(@comment).create? %>
+     New Comment
+     <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+    <% end %>
   </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
