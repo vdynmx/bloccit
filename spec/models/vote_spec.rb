@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Vote do
   describe "validations" do
     before do
@@ -13,4 +15,5 @@ describe Vote do
       end
     end
   end
+end
 end
