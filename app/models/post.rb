@@ -12,7 +12,11 @@ class Post < ActiveRecord::Base
   validates :topic, presence: true
   validates :user, presence: true
   
-  after_create :create_vote
+
+  
+  def create_vote
+    user.votes.create(value: 1, post: self)
+  end
 
   def markdown_title
   render_as_markdown title
@@ -41,8 +45,6 @@ class Post < ActiveRecord::Base
 
     self.update_attribute(:rank, new_rank)
   end
-
-  private
 
   def create_vote
     user.votes.create(value: 1, post: self)
