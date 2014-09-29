@@ -12,7 +12,7 @@
        <%= image_tag(@post.image.url) if @post.image? %>
      </small>
      <%= @comments.count %> Comments
-     <%= render partial: 'comments/comment', collection: @comment %>
+     <%= render partial: 'comments/comment', collection: @comments, locals: { topic: @topic, post: @post} %>
 
     <% if policy(@comment).create? %>
      New Comment
