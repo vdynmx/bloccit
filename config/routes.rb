@@ -1,17 +1,19 @@
 Bloccit::Application.routes.draw do
-  devise_for :users
-    resources :users, only: [:update, :show]
+  
+resources :posts, only: [:index]
   resources :topics do
-     resources :posts, except: [:index] do
+    resources :posts, except: [:index], controller: 'topics/posts' do
       resources :comments, only: [:create, :destroy]
-       resources :favorites, only: [:create, :destroy]
-      post '/up-vote', to: 'votes#up_vote', as: :up_vote
-      post '/down-vote', to: 'votes#down_vote', as: :down_vote
+      get '/up-vote' => 'votes#up_vote', as: :up_vote
+      get '/down-vote' => 'votes#down_vote', as: :down_vote
+      resources :favorites, only: [:create, :destroy]
     end
-   end
+  end
+
+  devise_for :users
+  resources :users, only: [:show, :index, :update]
 
   get 'about' => 'welcome#about'
 
   root to: 'welcome#index'
-  
 end
