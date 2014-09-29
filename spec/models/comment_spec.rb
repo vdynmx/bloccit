@@ -2,7 +2,7 @@ require 'rails_helper'
  
  describe Comment do
  
-   include TestFactories
+   include FactoryGirl
  
    describe "after_create" do
  

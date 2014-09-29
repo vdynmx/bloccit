@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-include TestFactories
+include FactoryGirl
 
 describe Vote do
   describe "validations" do

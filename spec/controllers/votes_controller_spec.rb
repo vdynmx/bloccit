@@ -2,7 +2,7 @@
  
  describe VotesController do 
  
-   include TestFactories
+   include FactoryGirl
    include Devise::TestHelpers
  
    describe '#up_vote' do
