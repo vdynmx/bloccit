@@ -8,7 +8,14 @@
   <div class="col-md-8">
     <p class="lead"><%= @topic.description %></p>
     <%= render @posts %>
-    <%= will_paginate @posts %>
+    <% ((@posts_count / 10) + 1).times do |index| %>
+      <% if index + 1 == @page %>
+        <%= link_to "<#{index + 1}>", topic_path( page: index + 1) %>
+      <% else %>
+        <%= link_to (index + 1).to_s, topic_path( page: index + 1) %>
+      <% end %>
+    <% end %>
+    <%#= will_paginate @posts %>
   </div>
    <div class="col-md-4">
    <% if policy(Post.new).create? %>

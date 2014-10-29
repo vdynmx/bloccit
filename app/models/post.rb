@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include Paginate
+  extend Paginate
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -17,7 +19,6 @@ class Post < ActiveRecord::Base
   validates :user, presence: true
   
 
-  
   def create_vote
     user.votes.create(value: 1, post: self)
   end
@@ -53,6 +54,4 @@ class Post < ActiveRecord::Base
   def create_vote
     user.votes.create(value: 1, post: self)
   end
-
-
 end

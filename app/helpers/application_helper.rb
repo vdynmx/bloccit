@@ -13,6 +13,8 @@ module ApplicationHelper
   redcarpet = Redcarpet::Markdown.new(renderer, extensions)
   (redcarpet.render text).html_safe
   end
-
+  
+  def will_paginate(objects)
+  end
 
 end
